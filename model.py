@@ -27,9 +27,10 @@ class QNetwork(nn.Module):
         """Build a network that maps state -> action values."""
         x = self.fc1(state)
         x = F.relu(x)
-        x = self.fc2(state)
+        x = self.fc2(x)
         x = F.relu(x)
-        x = self.fc3(state)
-        x = F.softmax(x, dim=1)
+        x = self.fc3(x)
+        x = F.relu(x)
+        #x = F.softmax(x, dim=1)
         
         return x
